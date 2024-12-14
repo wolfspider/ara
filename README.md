@@ -1,6 +1,13 @@
-# ARA
+# ĀRA
 
-**TODO: Add description**
+Āra (pronounced ˈɛərə) is a webserver ported from the FSharp project based on Mi-TLS. 
+The name comes from the latin word for "Altar" due to the code having its basis on many functional
+programming idioms and so it pays homage to this.
+
+# Status
+
+Currently, this is a very early implementation and so there are many parts which
+have not been hooked up quite yet including the fiber -> process translation.
 
 ## Installation
 
