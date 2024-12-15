@@ -45,12 +45,12 @@ defmodule Receiver do
     case HttpServer.serve(socket) do
       :ok ->
         #Logger.info("HTTP Request received: #{inspect(request)}")
-        buffer_pid = maybe_recreate_buffer(buffer_pid)
+        _buffer_pid = maybe_recreate_buffer(buffer_pid)
 
         # Handle the HTTP request here, e.g., pass it to another process or module.
 
         # Continue serving for additional requests on the same connection
-        serve(socket, buffer_pid)
+        # serve(socket, buffer_pid)
 
       #{:error, :eof} ->
       #  Logger.info("Socket closed by client.")

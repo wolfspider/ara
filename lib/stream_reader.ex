@@ -29,7 +29,11 @@ defmodule HttpStreamReader do
         end
 
       {:error, :eof} ->
-        {:error, :no_request}
+        Logger.info("Client disconnected after completing the request.")
+        {:error, :eof} # Gracefully terminate serving
+      {:error, :closed} ->
+        Logger.info("Socket closed by client.")
+        {:error, :closed} # Gracefully terminate serving
 
       {:error, reason} ->
         {:error, reason}

@@ -13,7 +13,7 @@ defmodule HttpServer do
     with {:ok, request} <- HttpStreamReader.read_request(client_socket),
          {:ok, response} <- handle_request(request) do
       send_response(client_socket, response)
-      # Continue serving for additional requests on the same connection
+      # Uncomment this if you want to continue serving after handling the request
       # serve(client_socket)
     else
       {:error, :eof} ->
@@ -24,6 +24,7 @@ defmodule HttpServer do
         Logger.error("Error processing request: #{inspect(reason)}")
         error_response = generate_error_response(HttpCode.code(:HTTP_500))
         send_response(client_socket, error_response)
+
     end
   end
 
